@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalService } from '../service/global.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent {
-
+  constructor(public globalService: GlobalService) { }
 }
