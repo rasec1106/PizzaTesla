@@ -1,1 +1,35 @@
-<p>shop works!</p>
+<div class="w-full px-5 h-full overflow-y-scroll  pb-40 toolscroll">
+    <h1 class="text-4xl font-black">{{ globalService.categorySelect.name }}</h1>
+    <p class="text-xl mt-2">
+      Pizza tan deliciosa y exquisita que incluso Elon Musk abandonaría Marte solo para probarla. 
+      ¡Será amor a primera rebanada!
+    </p>
+    
+    <div class="grid gap-5 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 mt-5">
+      <div
+        *ngFor="let p of globalService.productsGlobal"
+        class="border-2 border-gray-200"
+      >
+        <!-- <img src="{{ p.imagen }}" alt="{{ p.name }}" /> -->
+        <div class="h-96 bg-cover bg-center" style="background-image: url('{{ p.imagen }}')">
+  
+        </div>
+        <div class="p-3">
+          <p class="text-3xl text-zinc-900 font-bold">{{ p.name }}</p>
+          <p class="text-4xl font-black text-amber-500">
+            {{ globalService.formatearDinero(p.price) }}
+          </p>
+          <button
+            type="button"
+            class="p-3 font-bold transition-all hover:bg-amber-950 
+            {{globalService.getProductBtnSelect(p.id) ? 'bg-amber-950 ' : 'bg-amber-500 '}}
+             mt-5 w-full rounded-md uppercase text-white"
+            (click)="globalService.setProductSelected(p)"
+            >
+            {{globalService.getProductBtnSelect(p.id) ? 'Modificar' : 'Agregar'}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

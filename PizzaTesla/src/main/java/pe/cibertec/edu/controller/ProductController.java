@@ -14,32 +14,28 @@ import java.util.List;
 @RequestMapping("/api/product")
 public class ProductController {
 
-    private final ProductService productService;
+	@Autowired
+    private ProductService productService;
 
-    @Autowired
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
-    @GetMapping("/GetProducts")
+    @GetMapping("/getProducts")
     public ResponseEntity<List<Product>> getProducts() {
         List<Product> products = productService.getAllProducts();
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 
-    @GetMapping("/GetProductById/{id}")
+    @GetMapping("/getProductById/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable int id) {
         Product product = productService.getProductById(id);
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 
-    @PostMapping("/CreateProduct")
+    @PostMapping("/createProduct")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         Product createdProduct = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
-    @PutMapping("/UpdateProduct")
+    @PutMapping("/updateProduct")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
         Product updatedProduct = productService.updateProduct(product);
         if (updatedProduct != null) {
@@ -49,7 +45,7 @@ public class ProductController {
         }
     }
 
-    @DeleteMapping("/DeleteProduct/{id}")
+    @DeleteMapping("/deleteProduct/{id}")
     public ResponseEntity<Boolean> deleteProduct(@PathVariable int id) {
         boolean result = productService.deleteProduct(id);
         if (result) {
