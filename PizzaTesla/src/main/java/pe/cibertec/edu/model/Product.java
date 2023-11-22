@@ -20,12 +20,12 @@ public class Product {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int categoriaId;
-    private String nombre;
-    private String descripcion;
-    private int precio;
-    private String ingredientes;
-    private String tiempoPreparacion;
-    private String imagen;
+    private int categoryId;
+    private String name;
+    private String description;
+    private int price;
+    private String ingredients;
+    private String preparationTime;
+    private String imageUrl;
 	    
 }
