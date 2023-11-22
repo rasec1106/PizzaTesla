@@ -46,12 +46,12 @@ export class GlobalService implements OnInit{
     private categorySrv: CategoryService,
     private productSrv: ProductService
   ) {
-    // this.categorySrv.GetCategories().subscribe(result => this.categories = result);
-    // this.categorySrv.GetCategories().subscribe(result => {
-    //   this.categorySelect = result[0];
-    //   this.buildCategoryByProducto(result[0].categoryId);
-    // });
-    // this.productSrv.getProducts().subscribe(result => this.products = result);
+    this.categorySrv.getCategories().subscribe(result => this.categories = result);
+    this.categorySrv.getCategories().subscribe(result => {
+      this.categorySelect = result[0];
+      this.buildCategoryByProducto(result[0].categoryId);
+    });
+    this.productSrv.getProducts().subscribe(result => this.products = result);
    }
 
    // ********** Metodos
