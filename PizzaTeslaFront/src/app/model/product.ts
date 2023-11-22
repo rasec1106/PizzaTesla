@@ -5,6 +5,6 @@ export class Product {
     description?: string
     price?: number
     ingredients?: string
-    timePreparation?: string
-    imagen?: string
+    preparationTime?: string
+    imageUrl?: string
 }
