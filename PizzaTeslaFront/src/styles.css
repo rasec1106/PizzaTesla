@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+/* Estilos para la barra de desplazamiento */
+.toolscroll::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilos para el fondo de la barra de desplazamiento */
+.toolscroll::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color de fondo */
+}
+
+/* Estilos para el "pulgar" de la barra de desplazamiento */
+.toolscroll::-webkit-scrollbar-thumb {
+  background-color: #f59e0b; /* Color del "pulgar" */
+  border-radius: 5px; /* Forma redondeada */
+}
+.toolscroll-layout::-webkit-scrollbar-thumb {
+    background-color: #b91c1c; 
+}
+/* Estilos para el "pulgar" cuando el cursor se coloca sobre él */
+.toolscroll::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del "pulgar" al pasar el cursor */
+}
+
+/* Estilos para la esquina de la barra de desplazamiento */
+.toolscroll::-webkit-scrollbar-corner {
+  background-color: #f1f1f1; /* Color de fondo de la esquina */
+}
+

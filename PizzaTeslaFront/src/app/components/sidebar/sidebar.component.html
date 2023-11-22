@@ -1,1 +1,33 @@
-<p>sidebar works!</p>
+<aside class="p-5 ">
+    <img
+      src="{{globalService.logo_img}}"
+      alt="Logo"
+      class="w-3/4 block m-auto"
+    />
+    <button
+    type="button"
+    routerLink="/crud-products"
+    class="p-3 bg-indigo-600 hover:bg-indigo-700 transition-all text-white font-bold uppercase w-full rounded-md"
+    >
+      Crud Producto
+    </button>
+    <div class="flex flex-col mt-10 gap-5">
+      <div
+        *ngFor="let c of globalService.categories"
+        class="flex items-center gap-4 p-2 rounded-md {{globalService.categorySelect.categoryId == c.categoryId ? 'bg-red-700 text-white' :''}}"
+        
+      >
+        <img
+          src="{{ c.imageUrl }}"
+          alt="Imagen de categoria {{ c.name }}"
+          class="w-20"
+        />
+        <button 
+        (click)="setCategorySelected(c)"
+        class="text-xl font-bold">
+          {{ c.name }}
+        </button>
+      </div>
+    </div>
+  </aside>
+  
