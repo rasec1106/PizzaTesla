@@ -19,7 +19,7 @@ public class ProductController {
 
     @GetMapping("/getProducts")
     public ResponseEntity<List<Product>> getProducts() {
-        List<Product> products = productService.getAllProducts();
+        List<Product> products = productService.getProducts();
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 

@@ -5,7 +5,7 @@ import pe.cibertec.edu.model.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> getAllProducts();
+    List<Product> getProducts();
     Product getProductById(int id);
     Product createProduct(Product product);
     Product updateProduct(Product product);
