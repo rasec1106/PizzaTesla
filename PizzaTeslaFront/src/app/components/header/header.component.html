@@ -1,1 +1,12 @@
-<p>header works!</p>
+<header class="p-5">
+    <nav class="w-full flex justify-between font-bold text-xl">
+        <a type="button" routerLink="/{{pagina.ruta}}" *ngFor="let pagina of paginas">{{pagina.nombre}}</a>
+    </nav>
+    <div class=" bg-gray-200 rounded-md mt-2">
+        <div 
+        class="bg-red-600 rounded-md h-3"
+        [ngStyle]="{width: getRouterActual()}"
+        >
+        </div>
+    </div>    
+</header>

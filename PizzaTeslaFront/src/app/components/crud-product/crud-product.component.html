@@ -1,1 +1,2 @@
-<p>crud-product works!</p>
+<app-list-product [products]="products"></app-list-product>
+<app-modal-product [products]="products" *ngIf="globalService.activeModalProduct"></app-modal-product>

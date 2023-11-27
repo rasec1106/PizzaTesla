@@ -1,1 +1,135 @@
-<p>payment works!</p>
+<div>
+    <div class="h-full overflow-y-scroll px-5 xl:flex justify-between gap-5">
+      <form class="xl:w-2/4" [formGroup]="paymentForm" (ngSubmit)="enviarPedido()">
+        <!-- Personal Info -->
+        <div class="border-b border-gray-900/10 pb-12">
+          <h1 class="text-4xl font-black">Realiza tus pagos</h1>
+          <p class="text-xl mt-2">
+            Ordena tu pedido rapido, sencillo y sin problemas.
+          </p>
+  
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-3">
+              <label
+                for="first-name"
+                class="block text-sm font-medium leading-6 text-gray-900 uppercase"
+                >Nombre</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  formControlName="nombreCliente"
+                  autocomplete="given-name"
+                  class="block w-full p-3 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+  
+            <div class="sm:col-span-3">
+              <label
+                for="last-name"
+                class="block text-sm font-medium leading-6 text-gray-900 uppercase"
+                >Celular</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="last-name"
+                  id="last-name"
+                  formControlName="telefono"
+                  autocomplete="family-name"
+                  class="block w-full p-3 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+  
+            <div class="col-span-full">
+              <label
+                for="email"
+                class="block text-sm font-medium leading-6 text-gray-900 uppercase"
+                >Email</label
+              >
+              <div class="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  formControlName="email"
+                  autocomplete="email"
+                  class="block w-full p-3 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+  
+            <div class="col-span-full">
+              <label
+                for="street-address"
+                class="block text-sm font-medium leading-6 text-gray-900 uppercase"
+                >Direccion de Entrega</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="street-address"
+                  id="street-address"
+                  formControlName="direccionEntrega"
+                  autocomplete="street-address"
+                  class="block w-full p-3 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- List Pedido  -->
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+          <button
+            type="button"
+            class="text-sm font-semibold leading-6 uppercase text-gray-900"
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            class="rounded-md bg-indigo-600 p-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 uppercase focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Ordenar Pedido
+          </button>
+        </div>
+      </form>
+      <!-- Listado de detalle -->
+      <div class="bg-zinc-100 mt-16 xl:w-2/6 h-auto">
+        <h3 class="text-center text-xl text-white font-bold bg-indigo-500 p-3">
+          Detalle de pedido
+        </h3>
+        <div class="bg-white p-3 rounded shadow-md m-5 w-100 bottom-0">
+          <p class="text-xl">
+            Total a pagar:
+            <span class="text-indigo-500 font-black">{{
+              globalService.totalAPagar()
+            }}</span>
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-2 p-5">
+          <div *ngFor="let product of globalService.pedidos" class="flex gap-3">
+            <img
+              src="{{ product.imagen }}"
+              alt="{{ product.name }}"
+              class="w-20 h-20"
+            />
+            <div class="p-2">
+              <p class="text-indigo-600 font-black">{{ product.name }}</p>
+              <p>
+                SubTotal:
+                <span class="font-bold">{{
+                  globalService.formatearDinero(product.price * product.cantidad)
+                }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  

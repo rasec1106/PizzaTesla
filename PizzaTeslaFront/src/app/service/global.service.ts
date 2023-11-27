@@ -83,9 +83,9 @@ export class GlobalService implements OnInit{
   }
 
   buildCategoryByProducto(category: any) {
-    // this.productSrv.getProductByCategory(category).subscribe(
-    //   result => this.productsGlobal = result
-    // );
+    this.productSrv.getProductByCategory(category).subscribe(
+      result => this.productsGlobal = result
+    );
   }
 
   agregarAlPedido(product: any) {
@@ -132,10 +132,10 @@ export class GlobalService implements OnInit{
     this.pedidos = [];
     this.router.navigate(['']);
     this.apariencia = false;
-    // this.categorySrv.GetCategories().subscribe(result => {
-    //   this.categorySelect = result[0];
-    //   this.buildCategoryByProducto(result[0].categoryId);
-    // });
+    this.categorySrv.getCategories().subscribe(result => {
+      this.categorySelect = result[0];
+      this.buildCategoryByProducto(result[0].categoryId);
+    });
   }
 
 

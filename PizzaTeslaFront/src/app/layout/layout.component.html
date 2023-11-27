@@ -8,9 +8,8 @@
         class="md:w-2/6 lg:w-2/6 xl:w-3/12 h-100"
       ></app-sidebar>
       <main class="md:w-4/6 lg:w-4/6 xl:w-9/12 relative h-full">
-        <!-- <app-components-header></app-components-header> -->
+        <app-header></app-header>
         <router-outlet> </router-outlet>
-        <!-- <app-components-footer class=""></app-components-footer> -->
       </main>
     </div>
     <app-modal *ngIf="globalService.habilitarModel"></app-modal>
@@ -18,4 +17,5 @@
       *ngIf="globalService.alertaGlobal.titulo !== ''"
       class="bg-green-400"
     ></app-toast>
+    <app-footer class=""></app-footer>
   </div>
