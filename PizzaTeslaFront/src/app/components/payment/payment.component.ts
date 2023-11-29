@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { OrderItem } from 'src/app/model/order-item';
+import { Product } from 'src/app/model/product';
 import { GlobalService } from 'src/app/service/global.service';
 import { OrderService } from 'src/app/service/order.service';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +19,7 @@ export class PaymentComponent {
     public globalService: GlobalService,
     public router: Router,
     public orderService: OrderService,
+    public productService: ProductService
   ) {
 
     this.paymentForm = new FormGroup({
@@ -43,24 +47,32 @@ export class PaymentComponent {
     } else {
       this.globalService.setIsLoader(true);
 
-      const clienteId = this.globalService.numeroAleatorio();
       const fechaOrden = Date.now().toString();
       const estado = "Pendiente";
       const pedidoAdaptado = this.globalService.pedidos.map(product => {
         return {
-          pizzaId: product.id,
-          nombrePizza: product.name,
-          precioUnitario: product.price,
-          cantidad: product.cantidad,
-          subTotal: (product.price * product.cantidad)
+          "product": product,
+          "quantity": product.cantidad,
+          "unitPrice": product.price,
+          "subtotal": (product.price! * product.cantidad!)
         }
       });
-      this.paymentForm.value.clienteId = clienteId;
       this.paymentForm.value.fechaOrden = fechaOrden;
       this.paymentForm.value.estado = estado;
       this.paymentForm.value.ordenItems = pedidoAdaptado;
 
-      this.orderService.createOrder(this.paymentForm.value).subscribe();
+      this.orderService.createOrder({
+        "order":{
+          "orderDate": Date.now().toString(),
+          "clientName": this.paymentForm.value.nombreCliente,
+          "clientPhone": this.paymentForm.value.telefono,
+          "clientEmail": this.paymentForm.value.email,
+          "clientAddress": this.paymentForm.value.direccionEntrega,
+          "totalAmount": this.globalService.calculateTotal()
+        },
+        "orderItems": pedidoAdaptado
+      }).subscribe();
+      
       this.globalService.cleanReset();
       this.limpiarFormulario();
       setTimeout(() => {

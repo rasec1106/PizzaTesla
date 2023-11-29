@@ -43,9 +43,9 @@ export class ModalComponent {
   }
   
   ajustarCantidad() {
-    if(this.globalService.pedidos.some(p => p.id == this.selectionProduct.productId)) {
-      const productFind = this.globalService.pedidos.find(p => p.id == this.selectionProduct.productId)
-      this.cantidad = productFind.cantidad;
+    if(this.globalService.pedidos.some(p => p.productId == this.selectionProduct.productId)) {
+      const productFind = this.globalService.pedidos.find(p => p.productId == this.selectionProduct.productId)
+      this.cantidad = productFind!.cantidad;
     }
   }
 }

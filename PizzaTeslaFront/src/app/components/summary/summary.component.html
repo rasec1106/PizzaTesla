@@ -90,7 +90,7 @@
               <p class="text-xl mt-2">
                 SubTotal:
                 {{
-                  globalService.formatearDinero(product.price * product.cantidad)
+                  globalService.formatearDinero(product.price! * product.cantidad!)
                 }}
               </p>
             </div>
@@ -115,7 +115,7 @@
                 </svg>
               </button>
               <button
-                (click)="eliminarDePedido(product.id)"
+                (click)="eliminarDePedido(product.productId)"
                 class="rounded bg-red-600 p-1 text-white"
               >
                 <svg

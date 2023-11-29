@@ -1,8 +1,10 @@
+import { Product } from "./product"
+
 export class OrderItem {
-    pizzaId? : number
-    nombrePizza? : string
-    precioUnitario? : number
-    cantidad? : number
-    subTotal? : number
-    ordenId? : number
+    orderItemId?: number
+    product? : Product
+    quantity? : number
+    discount? : number
+    subtotal? : number
+    orderId? : number
 }

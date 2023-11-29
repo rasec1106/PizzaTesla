@@ -1,12 +1,15 @@
 import { OrderItem } from "./order-item"
 
 export class Order {
-    clienteId? : string
-    nombreCliente? : string
-    email? : string
-    telefono? : string
-    estado? : string
-    direccionEntrega? : string
-    fechaOrden? : string
+    orderId? : number
+    orderDate? : string
+    productCost? : number
+    deliveryCost? : number
+    discount? : number
+    totalAmount? : number
+    clientName? : string
+    clientPhone? : string
+    clientEmail? : string
+    clientAddress? : string
     orderItems?:OrderItem[]
 }

@@ -19,9 +19,9 @@ export class GlobalService implements OnInit{
   public categorySelect: Category = new Category();
   public rutaActual = this.router.url;
   public habilitarModel: boolean = false;
-  public productSelected: any = {};
+  public productSelected: Product = {};
 
-  public pedidos: any[] = []
+  public pedidos: Product[] = []
   public apariencia: boolean = false;
   public isLoading: boolean = false;
   public productBtnSelect: boolean = false;
@@ -89,8 +89,8 @@ export class GlobalService implements OnInit{
   }
 
   agregarAlPedido(product: Product) {
-    if (this.pedidos.some(p => p.id == product.productId)) {
-      const pedidosActualizados = this.pedidos.map(p => p.id == product.productId ? product : p);
+    if (this.pedidos.some(p => p.productId == product.productId)) {
+      const pedidosActualizados = this.pedidos.map(p => p.productId == product.productId ? product : p);
       this.pedidos = pedidosActualizados;
       this.toastAlert("Modificar","Producto actualizado",1);
     } else {
@@ -106,11 +106,15 @@ export class GlobalService implements OnInit{
   }
 
   totalAPagar() {
-    return this.formatearDinero(this.pedidos.reduce((total, product) => total += (product.price * product.cantidad), 0));
+    return this.formatearDinero(this.pedidos.reduce((total, product) => total += (product.price! * product.cantidad!), 0));
+  }
+
+  calculateTotal() {
+    return this.pedidos.reduce((total, product) => total += (product.price! * product.cantidad!), 0);
   }
 
   eliminarProductPedido(productId: any) {
-    const pedidosActualizados = this.pedidos.filter(p => p.id != productId);
+    const pedidosActualizados = this.pedidos.filter(p => p.productId != productId);
     this.pedidos = pedidosActualizados;
     this.toastAlert("Eliminar","Producto eliminado",2);
 
@@ -140,7 +144,7 @@ export class GlobalService implements OnInit{
 
 
   getProductBtnSelect(id: any) {
-    return this.pedidos.some(p => p.id == id);
+    return this.pedidos.some(p => p.productId == id);
   }
 
 

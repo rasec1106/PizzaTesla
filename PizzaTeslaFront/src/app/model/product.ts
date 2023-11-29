@@ -7,4 +7,5 @@ export class Product {
     ingredients?: string
     preparationTime?: string
     imageUrl?: string
+    cantidad?: number
 }
