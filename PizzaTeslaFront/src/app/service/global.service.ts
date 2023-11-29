@@ -88,9 +88,9 @@ export class GlobalService implements OnInit{
     );
   }
 
-  agregarAlPedido(product: any) {
-    if (this.pedidos.some(p => p.id == product.id)) {
-      const pedidosActualizados = this.pedidos.map(p => p.id == product.id ? product : p);
+  agregarAlPedido(product: Product) {
+    if (this.pedidos.some(p => p.id == product.productId)) {
+      const pedidosActualizados = this.pedidos.map(p => p.id == product.productId ? product : p);
       this.pedidos = pedidosActualizados;
       this.toastAlert("Modificar","Producto actualizado",1);
     } else {

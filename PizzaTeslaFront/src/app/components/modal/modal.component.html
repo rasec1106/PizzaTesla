@@ -119,11 +119,11 @@
                 <button
                   type="button"
                   class=" hover:bg-amber-500 transition-all 
-                  {{globalService.getProductBtnSelect(selectionProduct.id) ? 'bg-amber-500' : 'bg-white'}} 
+                  {{globalService.getProductBtnSelect(selectionProduct.productId) ? 'bg-amber-500' : 'bg-white'}} 
                   p-3 rounded-md mt-2 uppercase font-bold"
                   (click)="addPedido()"
                   >
-                  {{globalService.getProductBtnSelect(selectionProduct.id) ? 'Modificar' : 'Agregar al pedido'}}
+                  {{globalService.getProductBtnSelect(selectionProduct.productId) ? 'Modificar' : 'Agregar al pedido'}}
                   
                 </button>
               </div>

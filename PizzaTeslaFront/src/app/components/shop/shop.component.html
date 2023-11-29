@@ -1,4 +1,4 @@
-<div class="w-full px-5 h-full overflow-y-scroll  pb-40 toolscroll">
+<div class="w-full px-5 h-full overflow-y-auto toolscroll" style="padding-bottom: 161px;">
     <h1 class="text-4xl font-black">{{ globalService.categorySelect.name }}</h1>
     <p class="text-xl mt-2">
       Pizza tan deliciosa y exquisita que incluso Elon Musk abandonaría Marte solo para probarla. 
@@ -22,11 +22,11 @@
           <button
             type="button"
             class="p-3 font-bold transition-all hover:bg-amber-950 
-            {{globalService.getProductBtnSelect(p.id) ? 'bg-amber-950 ' : 'bg-amber-500 '}}
+            {{globalService.getProductBtnSelect(p.productId) ? 'bg-amber-950 ' : 'bg-amber-500 '}}
              mt-5 w-full rounded-md uppercase text-white"
             (click)="globalService.setProductSelected(p)"
             >
-            {{globalService.getProductBtnSelect(p.id) ? 'Modificar' : 'Agregar'}}
+            {{globalService.getProductBtnSelect(p.productId) ? 'Modificar' : 'Agregar'}}
           </button>
         </div>
       </div>
