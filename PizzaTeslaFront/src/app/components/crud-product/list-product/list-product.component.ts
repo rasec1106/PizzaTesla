@@ -17,6 +17,7 @@ export class ListProductComponent {
     ) {
       this.productSrv.getProducts().subscribe(res=>{
         this.globalService.products = res
+        this.products=res
       })
   }
 
@@ -27,6 +28,10 @@ export class ListProductComponent {
 
   deleteProduct(product: Product) {
     this.productSrv.deleteProduct(product.productId).subscribe();
+    this.productSrv.getProducts().subscribe(res=>{
+      this.globalService.products = res
+      this.products = res
+    })
     window.location.reload()
   }
 

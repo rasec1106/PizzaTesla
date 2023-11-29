@@ -92,6 +92,7 @@ export class ModalProductComponent {
     this.desactivarModal();
     // Recargamos la pagina
     this.location.go(this.location.path());
+    window.location.reload()
   }
 
   getProducts() {
