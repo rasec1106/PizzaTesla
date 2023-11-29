@@ -29,13 +29,13 @@ export class FormProductComponent implements OnInit{
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
-      categoriaId: ['', Validators.required],
+      categoryId: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
       ingredients: ['', Validators.required],
-      timePreparation: ['', Validators.required],
-      imagen: ['', Validators.required]
+      preparationTime: ['', Validators.required],
+      imageUrl: ['', Validators.required]
     });
   }
 
@@ -78,13 +78,13 @@ export class FormProductComponent implements OnInit{
   limpiarFormulario() {
 
     this.myForm = this.formBuilder.group({
-      categoriaId: ['', Validators.required],
+      categoryId: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
       ingredients: ['', Validators.required],
-      timePreparation: ['', Validators.required],
-      imagen: ['', Validators.required]
+      preparationTime: ['', Validators.required],
+      imageUrl: ['', Validators.required]
     });
   }
   volverListado() {

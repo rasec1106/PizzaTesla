@@ -21,23 +21,24 @@ export class ModalProductComponent {
   ngOnInit() {
     if (!this.product) {
       this.myForm = this.formBuilder.group({
-        categoriaId: ['', Validators.required],
+        categoryId: ['', Validators.required],
         name: ['', Validators.required],
         description: ['', Validators.required],
         price: ['', Validators.required],
         ingredients: ['', Validators.required],
-        timePreparation: ['', Validators.required],
-        imagen: ['', Validators.required]
+        preparationTime: ['', Validators.required],
+        imageUrl: ['', Validators.required]
       });
     }else {
       this.myForm = this.formBuilder.group({
-        categoriaId: [this.product.categoriaId, Validators.required],
+        productId: this.product.productId,
+        categoryId: [this.product.categoryId, Validators.required],
         name: [this.product.name, Validators.required],
         description: [this.product.description, Validators.required],
         price: [this.product.price, Validators.required],
         ingredients: [this.product.ingredients, Validators.required],
-        timePreparation: [this.product.preparationTime, Validators.required],
-        imagen: [this.product.imageUrl, Validators.required]
+        preparationTime: [this.product.preparationTime, Validators.required],
+        imageUrl: [this.product.imageUrl, Validators.required]
       });
     }
 
@@ -70,12 +71,25 @@ export class ModalProductComponent {
       return;
     }
 
-    this.productService.createProduct(this.myForm.value).subscribe(() => {
-      // Volver a obtener la lista de productos actualizada
-      this.productService.getProducts().subscribe(result => {
-        this.globalService.products = result;
+    if (this.globalService.products.some(p => p.productId == this.product.productId)) {
+      this.productService.updateProduct(this.myForm.value).subscribe(() => {
+        // Volver a obtener la lista de productos actualizada
+        this.productService.getProducts().subscribe(result => {
+          this.globalService.products = result;
+        });
+        this.globalService.buildCategoryByProducto(this.product.categoryId!);
       });
-    });
+    }else{
+      this.productService.createProduct(this.myForm.value).subscribe(() => {
+        // Volver a obtener la lista de productos actualizada
+        this.productService.getProducts().subscribe(result => {
+          this.globalService.products = result;
+        });
+        this.globalService.buildCategoryByProducto(this.product.categoryId!);
+      });
+    }
+    this.product={}
+    this.globalService.crudSelected = {};
     // Limpiar el formulario después de crear un producto
     this.desactivarModal();
     // Recargamos la pagina
@@ -97,13 +111,13 @@ export class ModalProductComponent {
   limpiarFormulario() {
 
     this.myForm = this.formBuilder.group({
-      categoriaId: ['', Validators.required],
+      categoryId: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
       ingredients: ['', Validators.required],
-      timePreparation: ['', Validators.required],
-      imagen: ['', Validators.required]
+      preparationTime: ['', Validators.required],
+      imageUrl: ['', Validators.required]
     });
   }
 }

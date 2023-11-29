@@ -46,16 +46,16 @@
             </div>
             <div class="sm:col-span-3">
               <label
-                for="timePreparation"
+                for="preparationTime"
                 class="block text-sm font-medium leading-6 text-gray-900 uppercase"
                 >Tiempo de preparacion</label
               >
               <div class="mt-2">
                 <input
                   type="text"
-                  name="timePreparation"
-                  id="timePreparation"
-                  formControlName="timePreparation"
+                  name="preparationTime"
+                  id="preparationTime"
+                  formControlName="preparationTime"
                   autocomplete="given-name"
                   class="block w-full p-3 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -64,15 +64,15 @@
   
             <div class="sm:col-span-3">
               <label
-                for="categoriaId"
+                for="categoryId"
                 class="block text-sm font-medium leading-6 text-gray-900 uppercase"
                 >Categoria</label
               >
               <div class="mt-2">
                 <select
-                  id="categoriaId"
-                  name="categoriaId"
-                  formControlName="categoriaId"
+                  id="categoryId"
+                  name="categoryId"
+                  formControlName="categoryId"
                   class="block w-full p-3 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
                   <option value="" disabled selected>-- Seleccionar --</option>
@@ -127,7 +127,7 @@
         <div class="w-2/4 space-y-8 mt-10">
           <div class="col-span-full">
             <label
-              for="imagen"
+              for="imageUrl"
               class="block text-sm font-medium leading-6 text-gray-900 uppercase"
               >Imagen</label
             >
@@ -135,9 +135,9 @@
             <div class="mt-2">
               <input
                 type="url"
-                name="imagen"
-                id="imagen"
-                formControlName="imagen"
+                name="imageUrl"
+                id="imageUrl"
+                formControlName="imageUrl"
                 autocomplete="street-address"
                 #imagenProduct
                 class="block w-full p-3 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

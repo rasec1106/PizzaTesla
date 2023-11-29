@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class=" flex flex-col w-full px-5 h-full overflow-y-auto toolscroll" style="padding-bottom: 161px;">
     <div>
       <button
         type="button"
@@ -8,7 +8,7 @@
         Nuevo Producto
       </button>
     </div>
-    <div class="overflow-hidden">
+    <div class="overflow-y-auto toolscroll">
       <table class="min-w-full text-left text-base font-light">
         <thead class="border-b font-medium dark:border-neutral-500">
           <tr>
@@ -35,7 +35,7 @@
             </td>
             <td class="whitespace-nowrap px-6 py-4">{{ product.name }}</td>
             <td class="whitespace-nowrap px-6 py-4">S/ {{ product.price }}</td>
-            <td class="whitespace-nowrap px-6 py-4">{{ product.categoriaId }}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{ product.categoryId }}</td>
             <td class="whitespace-nowrap px-6 py-4 space-x-3">
               <button class="rounded bg-amber-500 p-1 text-white" (click)="productSelected(product)">
                 <svg
@@ -53,7 +53,7 @@
                   />
                 </svg>
               </button>
-              <button class="rounded bg-red-600 p-1 text-white">
+              <button class="rounded bg-red-600 p-1 text-white" (click)="deleteProduct(product)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

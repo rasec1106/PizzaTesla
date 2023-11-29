@@ -23,7 +23,9 @@ export class ListProductComponent {
     this.globalService.crudSelected = product;
   }
 
-  deleteProduct(id: any) {
-    // this.productSrv.deleteProduct(parseInt(id)).subscribe();
+  deleteProduct(product: Product) {
+    this.productSrv.deleteProduct(product.productId).subscribe();
+    this.globalService.buildCategoryByProducto(product.categoryId!);
+    window.location.reload()
   }
 }

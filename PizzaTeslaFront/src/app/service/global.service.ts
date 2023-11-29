@@ -166,5 +166,6 @@ export class GlobalService implements OnInit{
 
   setActiveModalProduct(valor : boolean) {
     this.activeModalProduct = valor;
+    this.crudSelected = {}
   }
 }
