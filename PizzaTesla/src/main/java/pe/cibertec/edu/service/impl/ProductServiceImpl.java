@@ -52,8 +52,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductsByCategory(Long categoryId) {
-        // Implement your custom logic here
-        // Example: return productRepository.findByCategoryId(categoryId);
-        return null;
+        return productRepository.findByCategoryId(categoryId);
     }
 }

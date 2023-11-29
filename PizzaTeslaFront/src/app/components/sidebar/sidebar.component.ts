@@ -22,6 +22,6 @@ export class SidebarComponent {
   }
   setCategorySelected(category: Category) {
     this.globalService.setCategorySelect(category);
-    this.globalService.buildCategoryByProducto(category.categoryId);
+    this.globalService.buildCategoryByProducto(category.categoryId!);
   }
 }

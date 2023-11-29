@@ -49,7 +49,7 @@ export class GlobalService implements OnInit{
     this.categorySrv.getCategories().subscribe(result => this.categories = result);
     this.categorySrv.getCategories().subscribe(result => {
       this.categorySelect = result[0];
-      this.buildCategoryByProducto(result[0].categoryId);
+      this.buildCategoryByProducto(result[0].categoryId!);
     });
     this.productSrv.getProducts().subscribe(result => this.products = result);
    }
@@ -82,9 +82,9 @@ export class GlobalService implements OnInit{
     this.categorySelect = value;
   }
 
-  buildCategoryByProducto(category: any) {
-    this.productSrv.getProductByCategory(category).subscribe(
-      result => this.productsGlobal = result
+  buildCategoryByProducto(categoryId: number) {
+    this.productSrv.getProductByCategory(categoryId).subscribe(
+      result => this.products = result
     );
   }
 
@@ -138,7 +138,7 @@ export class GlobalService implements OnInit{
     this.apariencia = false;
     this.categorySrv.getCategories().subscribe(result => {
       this.categorySelect = result[0];
-      this.buildCategoryByProducto(result[0].categoryId);
+      this.buildCategoryByProducto(result[0].categoryId!);
     });
   }
 
