@@ -15,7 +15,9 @@ export class ListProductComponent {
     public globalService: GlobalService, 
     private productSrv: ProductService,
     ) {
-
+      this.productSrv.getProducts().subscribe(res=>{
+        this.globalService.products = res
+      })
   }
 
   productSelected(product : Product) {
@@ -25,7 +27,10 @@ export class ListProductComponent {
 
   deleteProduct(product: Product) {
     this.productSrv.deleteProduct(product.productId).subscribe();
-    this.globalService.buildCategoryByProducto(product.categoryId!);
     window.location.reload()
+  }
+
+  getCategoryName(categoryId: number): string {
+    return this.globalService.categories.find(c=>c.categoryId === categoryId)?.name || 'Unknown'; // Provide a default value if category not found
   }
 }

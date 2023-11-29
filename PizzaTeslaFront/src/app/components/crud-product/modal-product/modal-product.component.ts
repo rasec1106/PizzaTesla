@@ -77,7 +77,6 @@ export class ModalProductComponent {
         this.productService.getProducts().subscribe(result => {
           this.globalService.products = result;
         });
-        this.globalService.buildCategoryByProducto(this.product.categoryId!);
       });
     }else{
       this.productService.createProduct(this.myForm.value).subscribe(() => {
@@ -85,7 +84,6 @@ export class ModalProductComponent {
         this.productService.getProducts().subscribe(result => {
           this.globalService.products = result;
         });
-        this.globalService.buildCategoryByProducto(this.product.categoryId!);
       });
     }
     this.product={}

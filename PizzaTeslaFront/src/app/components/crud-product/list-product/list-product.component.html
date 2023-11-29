@@ -35,7 +35,7 @@
             </td>
             <td class="whitespace-nowrap px-6 py-4">{{ product.name }}</td>
             <td class="whitespace-nowrap px-6 py-4">S/ {{ product.price }}</td>
-            <td class="whitespace-nowrap px-6 py-4">{{ product.categoryId }}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{ getCategoryName(product.categoryId!) }}</td>
             <td class="whitespace-nowrap px-6 py-4 space-x-3">
               <button class="rounded bg-amber-500 p-1 text-white" (click)="productSelected(product)">
                 <svg
