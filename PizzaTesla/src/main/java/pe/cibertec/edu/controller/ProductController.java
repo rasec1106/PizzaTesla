@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/getProductById/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable int id) {
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Product product = productService.getProductById(id);
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/deleteProduct/{id}")
-    public ResponseEntity<Boolean> deleteProduct(@PathVariable int id) {
+    public ResponseEntity<Boolean> deleteProduct(@PathVariable Long id) {
         boolean result = productService.deleteProduct(id);
         if (result) {
             return ResponseEntity.status(HttpStatus.OK).body(true);
@@ -57,7 +57,7 @@ public class ProductController {
     }
 
     @GetMapping("/getByCategory/{categoryId}")
-    public ResponseEntity<List<Product>> getProductByCategory(@PathVariable int categoryId) {
+    public ResponseEntity<List<Product>> getProductByCategory(@PathVariable Long categoryId) {
         List<Product> products = productService.getProductsByCategory(categoryId);
         // Handle the case when the list is null or empty
         return ResponseEntity.status(HttpStatus.OK).body(products);

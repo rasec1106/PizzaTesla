@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(int id) {
+    public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
 
@@ -35,14 +35,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product) {
-        if (productRepository.existsById(product.getId())) {
+        if (productRepository.existsById(product.getProductId())) {
             return productRepository.save(product);
         }
         return null; // Handle the case where the product does not exist
     }
 
     @Override
-    public boolean deleteProduct(int id) {
+    public boolean deleteProduct(Long id) {
         if (productRepository.existsById(id)) {
             productRepository.deleteById(id);
             return true;
@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductsByCategory(int categoryId) {
+    public List<Product> getProductsByCategory(Long categoryId) {
         // Implement your custom logic here
         // Example: return productRepository.findByCategoryId(categoryId);
         return null;

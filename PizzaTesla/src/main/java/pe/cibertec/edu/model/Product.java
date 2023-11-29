@@ -3,27 +3,20 @@ package pe.cibertec.edu.model;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 import jakarta.persistence.Entity;
 
-
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class Product {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int categoryId;
+    private Long productId;
+    private Long categoryId;
     private String name;
     private String description;
-    private int price;
+    private double price;
     private String ingredients;
     private String preparationTime;
     private String imageUrl;

@@ -6,8 +6,8 @@ import pe.cibertec.edu.model.Category;
 
 public interface CategoryService {
 	List<Category> getCategories();
-	Category getCategoryById(int id);
+	Category getCategoryById(Long id);
 	Category createCategory(Category category);
 	Category updateCategory(Category category);
-    boolean deleteCategory(int id);
+    boolean deleteCategory(Long id);
 }

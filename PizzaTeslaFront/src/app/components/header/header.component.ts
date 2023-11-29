@@ -21,8 +21,8 @@ export class HeaderComponent {
 
   getRouterActual(): string {
     switch (this.globalService.rutaActual) {
-      case "/": return '10%';
-      case "/summary": return '50%';
+      case "/": return 'white';
+      case "/summary": return 'brown';
       case "/payment": return '100%';
       default: return '1';
 

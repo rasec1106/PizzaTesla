@@ -1,0 +1,7 @@
+a{
+    padding: 10px 15px;
+}
+a.selected{
+    background-color: #d32f2f;
+    color: white;
+}

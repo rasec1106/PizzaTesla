@@ -33,7 +33,7 @@ public class CategoryController {
     }
 
     @GetMapping("/getCategoryById/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
+    public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
         Category category = categoryService.getCategoryById(id);
         return ResponseEntity.status(HttpStatus.OK).body(category);
     }
@@ -55,7 +55,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/deleteCategory/{id}")
-    public ResponseEntity<Boolean> deleteCategory(@PathVariable int id) {
+    public ResponseEntity<Boolean> deleteCategory(@PathVariable Long id) {
         boolean result = categoryService.deleteCategory(id);
         if (result) {
             return ResponseEntity.status(HttpStatus.OK).body(true);
